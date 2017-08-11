@@ -1,0 +1,4 @@
+exception.log
+test/exception.log
+composer.lock
+vendor/
