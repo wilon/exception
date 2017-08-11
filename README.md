@@ -4,37 +4,23 @@ Better exception output & write log. Like Laravel.
 
 ## Installation & loading
 
-```sh
-composer require wilon/exception
-```
+`php -v >=5.3.9` Run:  `composer require wilon/exception:0.1`
 
-## A Simple Example
+`php -v >=5.5.9` Run:  `composer require wilon/exception`
 
-```php
-<?php
-
-$a = 123;
-$b = '23333';
-
-simple_dump($a, $b, $_GET, $_SERVER['REMOTE_ADDR']);
-
-simple_log(dirname(__FILE__) . '/somefile.log', $b, $_GET, $_SERVER['REMOTE_ADDR']);
-
-```
-## What's better then var_dump on browser?
+## Bootstrap
 
 ```php
 <?php
-
-$longStr = 'President Trump’s ouster of national security adviser Michael T. Flynn, and the circumstances leading up to it, have quickly become a major crisis for the fledgling administration, forcing the White House on the defensive and precipitating the first significant breach in relations between Trump and an increasingly restive Republican Congress.';
-$htmlStr = '<link rel="search" type="application/opensearchdescription+xml" href="/search.osd?v=1483361432" title="Packagist" /><br>';
-$array = pathinfo('C:/test/wilon/index.php');
-
-var_dump($longStr, $htmlStr, $array);
-
-simple_dump($longStr, $htmlStr, $array);
-
+(new Wilon\Exception\Handler)->bootstrap();
 ```
 
-![image](https://cloud.githubusercontent.com/assets/7512755/22959116/94ff96a8-f36e-11e6-835e-65d9ebc527cf.png)
+Or more Settings:
+
+```php
+<?php
+(new Wilon\Exception\Handler)
+    ->setLogger('exceptions', __DIR__ . '/exceptions.log')
+    ->bootstrap(-1, 'testing');
+```
 
