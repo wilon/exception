@@ -11,16 +11,14 @@ Better exception output & write log. Like Laravel.
 ## Bootstrap
 
 ```php
-<?php
-(new Wilon\Exception\Handler)->bootstrap();
+    (new Wilon\Exception\Handler)->bootstrap();
 ```
 
 Or more Settings:
 
 ```php
-<?php
-(new Wilon\Exception\Handler)
-    ->setLogger('exceptions', __DIR__ . '/exceptions.log')
-    ->bootstrap(-1, 'testing');
+    (new Wilon\Exception\Handler)
+        ->setLogger('exceptions', __DIR__ . '/exceptions.log')
+        ->bootstrap(-1, 'testing');
 ```
 
