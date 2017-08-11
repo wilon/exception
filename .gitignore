@@ -1,4 +1,4 @@
-exception.log
-test/exception.log
+*.log
+test/*.log
 composer.lock
 vendor/
