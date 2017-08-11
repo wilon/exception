@@ -1,0 +1,32 @@
+{
+    "name": "wilon/exception",
+    "description": "Better exception output & write log.",
+    "license": "MIT",
+    "homepage": "https://wilon.github.io",
+    "support": {
+        "issues": "https://github.com/wilon/exception/issues",
+        "source": "https://github.com/wilon/exception"
+    },
+    "keywords": ["php", "exception"],
+    "authors": [
+        {
+            "name": "Weilong Wang",
+            "email": "wilonx@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9",
+        "monolog/monolog": "=1.23.0",
+        "symfony/console": "=2.8.26",
+        "symfony/debug": "=2.8.26"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wilon\\Exception\\": ""
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
