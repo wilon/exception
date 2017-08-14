@@ -4,7 +4,7 @@ Better exception output & write log. Like Laravel.
 
 ### Installation & loading
 
-`php -v >=5.3.9` Run:  `composer require wilon/exception:0.1.1`
+`php -v >=5.3.9` Run:  `composer require wilon/exception:~0.1`
 
 `php -v >=5.5.9` Run:  `composer require wilon/exception`
 
