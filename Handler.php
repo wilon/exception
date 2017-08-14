@@ -33,13 +33,27 @@ class Handler
     public $logger;
 
     /**
+     * Show debug or not.
+     *
+     * @var bollean
+     */
+    public $show = true;
+
+    /**
+     * Just for testing this package.
+     *
+     * @var bollean
+     */
+    public $testing = false;
+
+    /**
      * Bootstrap the HandleExceptions.
      *
      * @param  int $level The new error_reporting level.
      * @param  string $environment
      * @return void
      */
-    public function bootstrap($level = -1, $environment = '')
+    public function bootstrap($level = -1, $show = true)
     {
         error_reporting($level);
 
@@ -49,9 +63,11 @@ class Handler
 
         register_shutdown_function([$this, 'handleShutdown']);
 
-        if ($environment !== 'testing') {
+        if ($this->testing) {
             ini_set('display_errors', 'Off');
         }
+
+        $this->show = $show;
 
         if (! $this->logger instanceof LoggerInterface) {
             $this->setLogger();
@@ -115,7 +131,7 @@ class Handler
         if (php_sapi_name() == 'cli') {
             (new ConsoleApplication)->renderException($e, new ConsoleOutput);
         } else {
-            $exception = new ExceptionHandler;
+            $exception = new ExceptionHandler($this->show);
             $exception->handle($e);
         }
     }

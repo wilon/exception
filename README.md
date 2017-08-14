@@ -12,15 +12,16 @@ Better exception output & write log. Like Laravel.
 
 ```php
     (new Wilon\Exception\Handler)->bootstrap();
-     // Set error_reporting(-1);
-     // Write log to ./exceptions.log
+    // Set error_reporting(-1) & Show debug.
+    // Write log to ./exceptions.log
 ```
 
-Or :
+Better :
 
 ```php
-    (new Wilon\Exception\Handler)->bootstrap(E_ALL ^ E_NOTICE);
-     // Set error_reporting(E_ALL ^ E_NOTICE);
+    (new Wilon\Exception\Handler)
+        ->bootstrap(E_ALL ^ E_NOTICE, $_ENV['APP_DEBUG']);
+     // Set error_reporting(E_ALL ^ E_NOTICE) & Show debug.
      // Write log to ./exceptions.log .
 ```
 
@@ -29,7 +30,7 @@ Or more Settings:
 ```php
     (new Wilon\Exception\Handler)
         ->setLogger('exceptions', __DIR__ . '/exceptions.log')
-        ->bootstrap(E_ALL);
+        ->bootstrap(E_ALL, false);
 ```
 
 ### Funtion Desc
@@ -46,7 +47,7 @@ Or more Settings:
 
     `$logger->pushHandler(new StreamHandler($loggerFile, Logger::WARNING));`
 
->  bootstrap (  [ int $level [, string $test] )
+>  bootstrap (  [ int $level [, boolean $show] )
 
 *Sets which PHP errors are reported*
 
@@ -54,7 +55,7 @@ Or more Settings:
 
     The new `error_reporting` level.
 
-* string $test
+* string $show
 
-    If is `testing`, just test this package.
+    If is `true`, show debug.
 
