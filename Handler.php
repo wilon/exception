@@ -14,9 +14,9 @@ namespace Wilon\Exception;
 
 use Exception;
 use ErrorException;
-use FatalThrowableError;
 use Symfony\Component\Debug\ExceptionHandler;
 use Symfony\Component\Debug\Exception\FatalErrorException;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Application as ConsoleApplication;
 use Monolog\Logger;
