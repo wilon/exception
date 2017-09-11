@@ -28,8 +28,13 @@ Better exception output & write log. Like Laravel.
 Better :
 
 ```php
+
+    $errorReporting = E_ALL ^ E_NOTICE;
+    $showErrorInfo = true;
+
     (new Wilon\Exception\Handler)
-        ->bootstrap(E_ALL ^ E_NOTICE, $_ENV['APP_DEBUG']);
+        ->bootstrap($errorReporting, $showErrorInfo);
+
      // Set error_reporting(E_ALL ^ E_NOTICE) & Show debug.
      // Write log to ./exceptions.log .
 ```
@@ -37,9 +42,15 @@ Better :
 Or more Settings:
 
 ```php
+
+    $loggerName = 'exceptions';
+    $loggerFile = __DIR__ . '/exceptions.log';
+    $errorReporting = E_ALL ^ E_NOTICE;
+    $showErrorInfo = true;
+    
     (new Wilon\Exception\Handler)
-        ->setLogger('exceptions', __DIR__ . '/exceptions.log')
-        ->bootstrap(E_ALL, false);
+        ->setLogger($loggerName, $loggerFile)
+        ->bootstrap($errorReporting, $showErrorInfo);
 ```
 
 ### Funtion Desc
