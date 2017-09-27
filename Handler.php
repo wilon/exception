@@ -86,7 +86,9 @@ class Handler
     public function setLogger($loggerName = 'wilon-exceptions', $loggerFile = 'exceptions.log')
     {
         $logger = new Logger($loggerName);
-        $logger->pushHandler(new StreamHandler($loggerFile, Logger::WARNING));
+        $handler = new StreamHandler($loggerFile, Logger::WARNING);
+        $handler->setFormatter(new LineFormatter(null, null, true));
+        $logger->pushHandler($handler);
         $this->logger = $logger;
         return $this;
     }
