@@ -21,6 +21,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Application as ConsoleApplication;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Formatter\LineFormatter;
 use Psr\Log\LoggerInterface;
 
 class Handler
@@ -86,7 +87,9 @@ class Handler
     public function setLogger($loggerName = 'wilon-exceptions', $loggerFile = 'exceptions.log')
     {
         $logger = new Logger($loggerName);
-        $logger->pushHandler(new StreamHandler($loggerFile, Logger::WARNING));
+        $handler = new StreamHandler($loggerFile, Logger::WARNING);
+        $handler->setFormatter(new LineFormatter(null, null, true, true));
+        $logger->pushHandler($handler);
         $this->logger = $logger;
         return $this;
     }
