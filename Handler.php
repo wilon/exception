@@ -21,6 +21,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Application as ConsoleApplication;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Formatter\LineFormatter;
 use Psr\Log\LoggerInterface;
 
 class Handler
