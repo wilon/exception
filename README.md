@@ -1,5 +1,14 @@
 # wilon/exception
 
+[![Packagist][badge_package]][link-packagist]
+[![Packagist Release][badge_release]][link-packagist]
+[![Packagist Downloads][badge_downloads]][link-packagist]
+
+[badge_package]:      https://img.shields.io/badge/package-wilon/exception-blue.svg?style=flat-square
+[badge_release]:      https://img.shields.io/packagist/v/wilon/exception.svg?style=flat-square
+[badge_downloads]:    https://img.shields.io/packagist/dt/wilon/exception.svg?style=flat-square
+[link-packagist]:     https://packagist.org/packages/wilon/exception
+
 Better exception output & write log. Like Laravel.
 
 ### Installation & loading
@@ -19,8 +28,13 @@ Better exception output & write log. Like Laravel.
 Better :
 
 ```php
+
+    $errorReporting = E_ALL ^ E_NOTICE;
+    $showErrorInfo = true;
+
     (new Wilon\Exception\Handler)
-        ->bootstrap(E_ALL ^ E_NOTICE, $_ENV['APP_DEBUG']);
+        ->bootstrap($errorReporting, $showErrorInfo);
+
      // Set error_reporting(E_ALL ^ E_NOTICE) & Show debug.
      // Write log to ./exceptions.log .
 ```
@@ -28,9 +42,15 @@ Better :
 Or more Settings:
 
 ```php
+
+    $loggerName = 'exceptions';
+    $loggerFile = __DIR__ . '/exceptions.log';
+    $errorReporting = E_ALL ^ E_NOTICE;
+    $showErrorInfo = true;
+    
     (new Wilon\Exception\Handler)
-        ->setLogger('exceptions', __DIR__ . '/exceptions.log')
-        ->bootstrap(E_ALL, false);
+        ->setLogger($loggerName, $loggerFile)
+        ->bootstrap($errorReporting, $showErrorInfo);
 ```
 
 ### Funtion Desc
